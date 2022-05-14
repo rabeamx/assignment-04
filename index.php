@@ -55,12 +55,11 @@ if( isset($_GET['delete_id']) ){
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
+                                <th>Roll</th>
+                                <th>Reg</th>
                                 <th>Gender</th>
                                 <th>Education</th>
                                 <th>Location</th>
-                                <th>Payment</th>
                                 <th>Result</th>
                                 <th>Photo</th>
                                 <th>Action</th>
@@ -82,14 +81,13 @@ if( isset($_GET['delete_id']) ){
                             <tr>
                                 <td><?php echo $i; $i++; ?></td>
                                 <td><?php echo $students -> name; ?></td>
-                                <td><?php echo $students -> email; ?></td>
-                                <td><?php echo $students -> phone; ?></td>
+                                <td><?php echo $students -> roll; ?></td>
+                                <td><?php echo $students -> reg; ?></td>
                                 <td><?php echo $students -> gender; ?></td>
                                 <td><?php echo $students -> education; ?></td>
                                 <td><?php echo $students -> location; ?></td>
-                                <td><?php echo $students -> payment; ?></td>
                                 <td><a class="btn btn-info btn-sm" href="./marks.php?student_id=<?php echo $students -> id; ?>">set mark</a></td>
-                                <td><img style="width: 110px;" src="./assets/image/<?php echo $students -> photo; ?>" alt=""></td>
+                                <td><img style="width: 70px;" src="./assets/image/<?php echo $students -> photo; ?>" alt=""></td>
                                 <td>
                                     <a class="btn btn-sm btn-info" href="./profile.php?student_id=<?php echo $students -> id; ?>">View</a>
                                     <a class="btn btn-sm btn-warning" href="#">Edit</a>

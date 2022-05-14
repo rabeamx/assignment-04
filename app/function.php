@@ -5,7 +5,8 @@
  * Create validation 
  */
 function validate($msg, $type = 'danger'){
-    return "<p class=\"alert alert-{$type}\"> {$msg} <button class=\"close\" data-dismiss=\"alert\">&times;</button> </p>";
+    return "<p class=\"alert alert-{$type} d-flex justify-content-between\"> {$msg} <button
+    data-bs-dismiss=\"alert\" class=\"btn-close\"></button></p>";
 }
 
 

@@ -8,7 +8,7 @@ if( isset($_GET['student_id']) ){
 
     $data = connect() -> query("SELECT * FROM students WHERE id='$id' LIMIT 1 ");
     $student_data = $data -> fetch_object();
-} else {
+} else{
     header("location:./");
 }
 
@@ -25,76 +25,70 @@ if( isset($_GET['student_id']) ){
 </head>
 <body>
 
-    <?php 
-    
-        // result form submit 
-        if( isset($_POST['result_add']) ){
-            // get student id value 
-            $student_id = $student_data -> id;
+<?php
 
-            // get form data 
-            $bn = $_POST['bn'];
-            $en = $_POST['en'];
-            $math = $_POST['math'];
-            $sci = $_POST['sci'];
-            $ssci = $_POST['ssci'];
-            $reli = $_POST['reli'];
+if( isset($_POST['result_add']) ){
+    // result form submit
+    $student_id = $student_data -> id;
 
+    // get form data
+    $bn = $_POST['bn'];
+    $en = $_POST['en'];
+    $math = $_POST['math'];
+    $sci = $_POST['sci'];
+    $ssci = $_POST['ssci'];
+    $reli = $_POST['reli'];
 
-            if( empty($bn) || empty($en) || empty($math) || empty($sci) || empty($ssci) || empty($reli) ){
-                $msg = validate('All fields are required');
-            }else {
-                connect() -> query("UPDATE students SET bn='$bn', en='$en', math='$math', sci='$sci', ssci='$ssci', reli='$reli' WHERE id='$student_id'");
-                header("location:./");
-            }
+    if(empty($bn) || empty($en)|| empty($math)|| empty($sci)|| empty($ssci)|| empty($reli)) {
+        $msg = validate("all fields are required!", "warning");
+    } else{
+        connect() -> query("UPDATE students SET bn='$bn', eng='$en', math='$math', sci='$sci', ssci='$ssci', rel='$reli' WHERE id='$student_id' ");
+        $msg = validate("result updated", "success");
+    }
+}
 
-
-        }
-    
-    
-    ?>
+?>
 
 <div class="container my-3">
     <div class="row justify-content-center">
         <div class="col-md-5">
+        <a class="btn btn-info btn-sm my-3" href="./">back</a>
             <div class="card shadow-sm">
                 <div class="card-body">
                     <div class="profile">
                         <img src="./assets/image/<?php echo $student_data -> photo; ?>" alt="">
-                        <h2><?php echo $student_data -> name; ?></h2>
-                        <p><?php echo $student_data -> email; ?></p>
-                        <a class="btn btn-info btn-sm" href="./">back</a>
+                        <h5 class="my-3">Roll : <?php echo $student_data -> roll; ?> Reg : <?php echo $student_data -> reg; ?></h5>
                     </div>
                     <hr>
 				    <?php echo $msg ?? ''; ?>
 				    <form action="" method="POST">
 
-                        <div class="form-group">
+                        <div class="my-3">
                             <label for="">Bangla</label>
-                            <input name="bn" value="<?php echo $student_data -> bn; ?>" class="form-control" type="text">
+                            <input name="bn" value="" class="form-control" type="text">
                         </div>  
-                        <div class="form-group">
+                        <div class="my-3">
                             <label for="">English</label>
-                            <input name="en" value="<?php echo $student_data -> en; ?>" class="form-control" type="text">
+                            <input name="en" value="" class="form-control" type="text">
                         </div>
-                        <div class="form-group">
+                        <div class="my-3">
                             <label for="">Math</label>
-                            <input name="math" value="<?php echo $student_data -> math; ?>" class="form-control" type="text">
+                            <input name="math" value="" class="form-control" type="text">
                         </div>
-                        <div class="form-group">
+                        <div class="my-3">
                             <label for="">Science</label>
-                            <input name="sci" class="form-control" value="<?php echo $student_data -> sci; ?>" type="text">
+                            <input name="sci" class="form-control" value="" type="text">
                         </div>
-                        <div class="form-group">
+                        <div class="my-3">
                             <label for="">Social Science</label>
-                            <input name="ssci" class="form-control" value="<?php echo $student_data -> ssci; ?>" type="text">
+                            <input name="ssci" class="form-control" value="" type="text">
                         </div>
-                        <div class="form-group">
+                        <div class="my-3">
                             <label for="">Religion</label>
-                            <input name="reli" class="form-control" value="<?php echo $student_data -> reli; ?>" type="text">
+                            <input name="reli" class="form-control" value="" type="text">
                         </div>
                         
-                        <div class="form-group">
+                        <div class="my-3">
                             <input name="result_add" class="btn btn-primary" type="submit" value="Set Result">
                         </div>
                     </form>

@@ -14,6 +14,26 @@ include_once "./autoload.php";
 </head>
 <body>
 	
+<?php
+
+if( isset($_POST['result']) ){
+	// get values
+	$exam = $_POST['exam'];
+	$year = $_POST['year'];
+	$board = $_POST['board'];
+	$roll = $_POST['roll'];
+	$reg = $_POST['reg'];
+
+	if( empty($exam) || empty($year) || empty($board) || empty($roll) || empty($reg) ){
+		$msg = 'all fields are required!';
+	} else{
+		$result = connect() -> query("SELECT * FROM students WHERE education='$exam' AND year='$year' AND board='$board' AND roll='$roll' AND reg='$reg' ");
+
+		$search_data = $result -> fetch_object();
+	}
+}
+
+?>
 
 	<div class="wraper">
 		<div class="w-top">
@@ -31,29 +51,25 @@ include_once "./autoload.php";
 
 				<div class="student-info">
 					<div class="student-photo">
-						<img src="assets/images/Piet-Olivier-photo-passport-size.jpeg" alt="">
+						<img src="../assets/image/<?php echo $search_data -> photo; ?>" alt="">
 					</div>
 					<div class="student-details">
 						<table>
 							<tr>
 								<td>Name</td>
-								<td>Asraful Haque</td>
+								<td><?php echo $search_data -> name; ?></td>
 							</tr>
 							<tr>
 								<td>Roll</td>
-								<td>505050</td>
+								<td><?php echo $search_data -> roll; ?></td>
 							</tr>
 							<tr>
 								<td>Reg.</td>
-								<td>101010</td>
+								<td><?php echo $search_data -> reg; ?></td>
 							</tr>
 							<tr>
 								<td>Board</td>
-								<td>Dhaka</td>
-							</tr>
-							<tr>
-								<td>Institute</td>
-								<td>CT</td>
+								<td><?php echo $search_data -> board; ?></td>
 							</tr>
 							<tr>
 								<td>Result</td>
@@ -75,38 +91,38 @@ include_once "./autoload.php";
 						</tr>
 						<tr>
 							<td>Bangla</td>
-							<td>89</td>
+							<td><?php echo $search_data -> bn; ?></td>
 							<td>5</td>
 							<td>4.8</td>
 							<td rowspan="6">4.8</td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
+							<td>English</td>
+							<td><?php echo $search_data -> eng; ?></td>
 							<td>5</td>
 							<td>4.8</td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
+							<td>Math</td>
+							<td><?php echo $search_data -> math; ?></td>
 							<td>5</td>
 							<td>4.8</td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
+							<td>Science</td>
+							<td><?php echo $search_data -> sci; ?></td>
 							<td>5</td>
 							<td>4.8</td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
+							<td>S Sci</td>
+							<td><?php echo $search_data -> ssci; ?></td>
 							<td>5</td>
 							<td>4.8</td>
 						</tr>
 						<tr>
-							<td>Bangla</td>
-							<td>89</td>
+							<td>Religion</td>
+							<td><?php echo $search_data -> rel; ?></td>
 							<td>5</td>
 							<td>4.8</td>
 						</tr>

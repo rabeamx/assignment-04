@@ -15,26 +15,6 @@ include_once "./autoload.php";
 </head>
 <body>
 
-<?php
-
-if( isset($_POST['result']) ){
-	// get values
-	$exam = $_POST['exam'];
-	$year = $_POST['year'];
-	$board = $_POST['board'];
-	$roll = $_POST['roll'];
-	$reg = $_POST['reg'];
-
-	if( empty($exam) || empty($year) || empty($board) || empty($roll) || empty($reg) ){
-		$msg = 'all fields are required!';
-	} else{
-		$result = connect() -> query("SELECT * FROM students WHERE education='$exam' AND year='$year' AND board='$board' AND roll='$roll' AND reg='$reg' ");
-
-		print_r( $result -> fetch_object() ) ;
-	}
-}
-
-?>
 	
 	<div class="wraper">
 		<a class="btn btn-info btn-sm my-3" href="./">back</a>
@@ -69,7 +49,7 @@ if( isset($_POST['result']) ){
 						<td>Year</td>
 						<td>
 							<select name="year">
-                            <option value="0000" selected>Select One</option>
+                            <option value="0000" selected>Select</option>
                             <option value="2022">2022</option>
                             <option value="2021">2021</option>
                             <option value="2020">2020</option>
@@ -86,7 +66,7 @@ if( isset($_POST['result']) ){
 						<td>Board</td>
 						<td>
 						 	<select name="board">
-		                          <option value=""selected>Select One</option>
+		                          <option value=""selected>Select</option>
 								  <option value="barisal">Barisal</option>
 								  <option value="chittagong">Chittagong</option>
 								  <option value="comilla">Comilla</option>

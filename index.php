@@ -86,7 +86,19 @@ if( isset($_GET['delete_id']) ){
                                 <td><?php echo $students -> gender; ?></td>
                                 <td><?php echo $students -> education; ?></td>
                                 <td><?php echo $students -> location; ?></td>
-                                <td><a class="btn btn-info btn-sm" href="./marks.php?student_id=<?php echo $students -> id; ?>">set mark</a></td>
+                                <td>
+                                    <?php 
+                                        if( $students -> bn == 0 || $students -> eng == 0|| $students -> math == 0 || $students -> sci == 0 || $students -> ssci == 0 || $students -> rel == 0  ) :
+                                    ?>
+                                    <a class="btn btn-warning btn-sm" href="./marks.php?student_id=<?php echo $students -> id; ?>">set marks</a>
+                                    <?php
+                                        else :
+                                    ?>
+                                    <a class="btn btn-primary btn-sm" href="./result/">check result</a>
+                                    <?php
+                                        endif;
+                                    ?>
+                                </td>
                                 <td><img style="width: 70px;" src="./assets/image/<?php echo $students -> photo; ?>" alt=""></td>
                                 <td>
                                     <a class="btn btn-sm btn-info" href="./profile.php?student_id=<?php echo $students -> id; ?>">View</a>

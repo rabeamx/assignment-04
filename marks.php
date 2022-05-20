@@ -65,27 +65,27 @@ if( isset($_POST['result_add']) ){
 
                         <div class="my-3">
                             <label for="">Bangla</label>
-                            <input name="bn" value="" class="form-control" type="text">
+                            <input name="bn" value="<?php echo $student_data -> bn; ?>" class="form-control" type="text">
                         </div>  
                         <div class="my-3">
                             <label for="">English</label>
-                            <input name="en" value="" class="form-control" type="text">
+                            <input name="en" value="<?php echo $student_data -> eng; ?>" class="form-control" type="text">
                         </div>
                         <div class="my-3">
                             <label for="">Math</label>
-                            <input name="math" value="" class="form-control" type="text">
+                            <input name="math" value="<?php echo $student_data -> math; ?>" class="form-control" type="text">
                         </div>
                         <div class="my-3">
                             <label for="">Science</label>
-                            <input name="sci" class="form-control" value="" type="text">
+                            <input name="sci" class="form-control" value="<?php echo $student_data -> sci; ?>" type="text">
                         </div>
                         <div class="my-3">
                             <label for="">Social Science</label>
-                            <input name="ssci" class="form-control" value="" type="text">
+                            <input name="ssci" class="form-control" value="<?php echo $student_data -> ssci; ?>" type="text">
                         </div>
                         <div class="my-3">
                             <label for="">Religion</label>
-                            <input name="reli" class="form-control" value="" type="text">
+                            <input name="reli" class="form-control" value="<?php echo $student_data -> rel; ?>" type="text">
                         </div>
                         
                         <div class="my-3">

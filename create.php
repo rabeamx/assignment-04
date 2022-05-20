@@ -23,6 +23,8 @@ if(isset($_POST['add_student'])){
    $email = $_POST['email'];
    $phone = $_POST['phone'];
    $edu = $_POST['edu'];
+   $board = $_POST['board'];
+   $year = $_POST['year'];
    $gender = $_POST['gender'];
    $location = $_POST['location'];
 
@@ -32,7 +34,7 @@ if(isset($_POST['add_student'])){
    move_uploaded_file($file_tmp_name, './assets/image/' . $file_name);
 
    // form validation
-   connect() -> query("INSERT INTO students (name, email, phone, gender, education, location, photo) VALUES ('$name', '$email', '$phone', '$gender', '$edu', '$location', '$file_name')");
+   connect() -> query("INSERT INTO students (name, email, phone, gender, education, board, year, location, photo) VALUES ('$name', '$email', '$phone', '$gender', '$edu', '$board', '$year', '$location', '$file_name')");
 }
 
 ?>
@@ -69,6 +71,35 @@ if(isset($_POST['add_student'])){
                             <option value="eee">EEE</option>
                             <option value="iso">ISO</option>
                             <option value="software">Software</option>
+                        </select>
+                    </div>
+                    <div class="my-3">
+                        <label for="">Board</label>
+                        <select name="board" id="" class="form-control">
+                                  <option value=""selected>Select</option>
+								  <option value="barisal">Barisal</option>
+								  <option value="chittagong">Chittagong</option>
+								  <option value="comilla">Comilla</option>
+		                          <option value="dhaka">Dhaka</option>
+								  <option value="dinajpur">Dinajpur</option>
+								  <option value="jessore">Jessore</option>
+		                          <option value="rajshahi">Rajshahi</option>
+		                          <option value="sylhet">Sylhet</option>
+                        </select>
+                    </div>
+                    <div class="my-3">
+                        <label for="">Year</label>
+                        <select name="year" id="" class="form-control">
+                            <option value="0000" selected>Select</option>
+                            <option value="2022">2022</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
                         </select>
                     </div>
                     <div class="my-3">

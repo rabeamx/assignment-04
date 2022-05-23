@@ -1,6 +1,7 @@
 <?php
 
 include_once "./autoload.php";
+$msg = $_GET['error'] ??'' ;
 
 ?>
 <!DOCTYPE html>

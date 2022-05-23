@@ -11,115 +11,89 @@ function validate($msg, $type = 'danger'){
 
 
 /**
- * Grade & GPA Cal 
+ * GPA cal
  */
-function gpa($marks){
 
-    $gpa = '';
+function gpa($marks) {
+    $gpa = null;
 
-
-    if($marks >= 0 && $marks < 33){
+    if($marks >= 0 && $marks < 33) {
         $gpa = 0;
-
-    }else if($marks >= 33 && $marks < 40){
+    }
+    if($marks >= 33 && $marks < 40) {
         $gpa = 1;
-
-    }else if($marks >= 40 && $marks < 50){
+    }
+    if($marks >= 40 && $marks < 50) {
         $gpa = 2;
-
-    }else if($marks >= 50 && $marks < 60){
+    }
+    if($marks >= 50 && $marks < 60) {
         $gpa = 3;
-
-    }else if($marks >= 60 && $marks < 70){
-        $gpa = 3.5;
-
-    }else if($marks >= 70 && $marks < 80){
+    }
+    if($marks >= 60 && $marks < 70) {
         $gpa = 4;
- 
-    }else if($marks >= 80 && $marks <= 100){
+    }
+    if($marks >= 70 && $marks < 80) {
+        $gpa = 4.50;
+    }
+    if($marks >= 80 && $marks < 100) {
         $gpa = 5;
-
-    }else{
-        $gpa = 'invalid';
-
     }
 
     return $gpa;
-
 }
-
-
-
 /**
- * Grade & GPA Cal 
+ *  Grade cal
  */
-function grade($marks){
+function grade($marks) {
+    $grade = null;
 
-
-    $grade = '';
-
-    if($marks >= 0 && $marks < 33){
- 
-        $grade = 'F';
-    }else if($marks >= 33 && $marks < 40){
-   
-        $grade = 'D';
-    }else if($marks >= 40 && $marks < 50){
-  
-        $grade = 'C';
-    }else if($marks >= 50 && $marks < 60){
-  
-        $grade = 'B';
-    }else if($marks >= 60 && $marks < 70){
- 
-        $grade = 'A-';
-    }else if($marks >= 70 && $marks < 80){
-
-        $grade = 'A';
-    }else if($marks >= 80 && $marks <= 100){
-   
-        $grade = 'A+';
-    }else{
-
-        $grade = 'invalid';
+    if($marks >= 0 && $marks < 33) {
+        $grade = 'f';
+    }
+    if($marks >= 33 && $marks < 40) {
+        $grade = 'd';
+    }
+    if($marks >= 40 && $marks < 50) {
+        $grade = 'c';
+    }
+    if($marks >= 50 && $marks < 60) {
+        $grade = 'b';
+    }
+    if($marks >= 60 && $marks < 70) {
+        $grade = 'a';
+    }
+    if($marks >= 70 && $marks < 80) {
+        $grade = 'a-';
+    }
+    if($marks >= 80 && $marks < 100) {
+        $grade = 'a+';
     }
 
     return $grade;
-
-
 }
-
-
 /**
- * CGPA 
+ * cgpa
  */
-function cgpa($bn, $en, $math, $sci, $ssci, $reli){
+function cgpa($bn, $eng, $math, $sci, $ssci, $rel) {
+    $tolal_gpa = gpa($bn) + gpa($eng) + gpa($math) + gpa($sci) + gpa($ssci) +gpa($rel);
 
-    $total_gpa = gpa($bn) + gpa($en) + gpa($math) + gpa($sci) + gpa($ssci) + gpa($reli);
-
-    if($bn < 33 || $en < 33 || $math < 33 || $sci < 33 || $ssci < 33 || $reli < 33  ) {
-        return '';
-   }else {
-        return $total_gpa / 6;
-   }
-
-    
-
-
+    if($bn < 33 || $eng < 33 || $math < 33 || $sci < 33 || $ssci < 33 || $rel <33) {
+        return "";
+    } else{
+        return $tolal_gpa / 6;
+    }
 }
-
-
 /**
- * CGPA 
+ * Result 
  */
-function result($bn, $en, $math, $sci, $ssci, $reli){
 
-   if($bn < 33 || $en < 33 || $math < 33 || $sci < 33 || $ssci < 33 || $reli < 33  ) {
-        return '<span style="color:red;font-weight:bold;">Failed<span></span></span>';
-   }else {
-        return '<span style="color:green;font-weight:bold;">Passed<span></span></span>';
-   }
+function result($bn, $eng, $math, $sci, $ssci, $rel) {
 
+    if($bn < 33 || $eng < 33 || $math < 33 || $sci < 33 || $ssci < 33 || $rel < 33) {
+        return '<span style="color:red; font-weight:bold;">failed</span>';
+    } else {
+        return '<span style="color:green; font-weight:bold;">passed</span>';
+    }
 }
 
 

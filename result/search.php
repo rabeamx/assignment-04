@@ -25,12 +25,29 @@ if( isset($_POST['result']) ){
 	$reg = $_POST['reg'];
 
 	if( empty($exam) || empty($year) || empty($board) || empty($roll) || empty($reg) ){
-		$msg = 'all fields are required!';
+
+		header("location:./");
+
 	} else{
+
 		$result = connect() -> query("SELECT * FROM students WHERE education='$exam' AND year='$year' AND board='$board' AND roll='$roll' AND reg='$reg' ");
 
-		$search_data = $result -> fetch_object();
+			$search_data = $result -> fetch_object();
+			// if( $search_data = $result -> fetch_object() ) {
+
+			// 	$search_data = $result -> fetch_object();
+	
+			// } else {
+	
+			// 	header("location:./?error='no result'");
+	
+			// }
+
 	}
+} else{
+
+	header("location:./");
+
 }
 
 ?>
@@ -73,7 +90,7 @@ if( isset($_POST['result']) ){
 							</tr>
 							<tr>
 								<td>Result</td>
-								<td><span style="color:green;font-weight:bold;">Passed<span></td>
+								<td><?php echo result($search_data -> bn, $search_data -> eng, $search_data -> math, $search_data -> sci, $search_data -> ssci, $search_data -> rel)?></td>
 							</tr>
 						</table>
 					</div>
@@ -92,39 +109,41 @@ if( isset($_POST['result']) ){
 						<tr>
 							<td>Bangla</td>
 							<td><?php echo $search_data -> bn; ?></td>
-							<td>5</td>
-							<td>4.8</td>
-							<td rowspan="6">4.8</td>
+							<td><?php echo grade($search_data -> bn)?></td>
+							<td><?php echo gpa($search_data -> bn)?></td>
+							<td rowspan="6">
+							<?php echo cgpa($search_data -> bn, $search_data -> eng, $search_data -> math, $search_data -> sci, $search_data -> ssci, $search_data -> rel)?>
+							</td>
 						</tr>
 						<tr>
 							<td>English</td>
 							<td><?php echo $search_data -> eng; ?></td>
-							<td>5</td>
-							<td>4.8</td>
+							<td><?php echo grade($search_data -> eng)?></td>
+							<td><?php echo gpa($search_data -> eng)?></td>
 						</tr>
 						<tr>
 							<td>Math</td>
 							<td><?php echo $search_data -> math; ?></td>
-							<td>5</td>
-							<td>4.8</td>
+							<td><?php echo grade($search_data -> math)?></td>
+							<td><?php echo gpa($search_data -> math)?></td>
 						</tr>
 						<tr>
 							<td>Science</td>
 							<td><?php echo $search_data -> sci; ?></td>
-							<td>5</td>
-							<td>4.8</td>
+							<td><?php echo grade($search_data -> sci)?></td>
+							<td><?php echo gpa($search_data -> sci)?></td>
 						</tr>
 						<tr>
 							<td>S Sci</td>
 							<td><?php echo $search_data -> ssci; ?></td>
-							<td>5</td>
-							<td>4.8</td>
+							<td><?php echo grade($search_data -> ssci)?></td>
+							<td><?php echo gpa($search_data -> ssci)?></td>
 						</tr>
 						<tr>
 							<td>Religion</td>
 							<td><?php echo $search_data -> rel; ?></td>
-							<td>5</td>
-							<td>4.8</td>
+							<td><?php echo grade($search_data -> rel)?></td>
+							<td><?php echo gpa($search_data -> rel)?></td>
 						</tr>
 					</table>
 				</div>
